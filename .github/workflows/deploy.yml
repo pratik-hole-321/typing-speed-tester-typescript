@@ -2,32 +2,32 @@ name: Build and Deploy
 
 on:
   push:
-    branches: -main
+    branches: [main]
 
 jobs:
   build:
-    runs-on: ubantu-latest
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: install dependecies
+      - name: Install Dependencies
         run: npm install
 
-      - name: Build project
+      - name: Build Project
         run: npm run build
 
-      - name: Copy public files to dist
+      - name: Copy HTML/CSS to dist
         run: cp -r public/* dist/
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/action-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secret.GITHUB_TOKEN }}
-          public_dir: ./dist
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
