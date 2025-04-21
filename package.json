@@ -1,5 +1,5 @@
 {
-  "name": "typing-speed-tester",
+  "homepage": "https://pratik-hole-321.github.io/typing-speed-tester-typescript",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"

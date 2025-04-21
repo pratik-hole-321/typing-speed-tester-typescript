@@ -23,8 +23,11 @@ jobs:
       - name: Build Project
         run: npm run build
 
+      - name: Compile TypeScript
+        run: npx tsc
+
       - name: Copy HTML/CSS to dist
-        run: cp -r public/* dist/
+        run: cp -r public/* public/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
