@@ -2,7 +2,8 @@ name: Build and Deploy
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   build:
@@ -23,20 +24,11 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      - name: Compile TypeScript
-        run: npx tsc
-
-      - name: List files in dist folder
-        run: ls -R dist # Check the dist folder contents
-
       - name: Copy HTML/CSS to dist
         run: cp -r public/* dist/
-
-      - name: List files in dist
-        run: ls dist
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: /dist
