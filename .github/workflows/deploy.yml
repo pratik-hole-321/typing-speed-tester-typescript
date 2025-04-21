@@ -26,8 +26,14 @@ jobs:
       - name: Compile TypeScript
         run: npx tsc
 
+      - name: List files in dist folder
+        run: ls -R dist # Check the dist folder contents
+
       - name: Copy HTML/CSS to dist
         run: cp -r public/* dist/
+
+      - name: List files in dist
+        run: ls dist
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
